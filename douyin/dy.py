@@ -6,6 +6,7 @@ import time
 
 from DrissionPage import ChromiumPage
 
+
 def save_comments_to_csv(comments, writer):
     for comment in comments:
         text = comment['text']
@@ -15,9 +16,9 @@ def save_comments_to_csv(comments, writer):
         writer.writerow({'昵称': nickname, '点赞数': digg_count, '时间': create_time, '评论': text})
         print({'昵称': nickname, '点赞数': digg_count, '时间': create_time, '评论': text})
 
+
 def main():
     try:
-
         with open('data.csv', mode='w', encoding='utf-8', newline='') as f:
             csv_writer = csv.DictWriter(f, fieldnames=['昵称', '点赞数', '时间', '评论'])
             csv_writer.writeheader()
@@ -26,10 +27,13 @@ def main():
             driver.listen.start('aweme/v1/web/comment/list/')
             driver.get('https://v.douyin.com/')
 
-            # driver.get('https://v.douyin.com/ijUsDWgh/')
             page = 0
             try:
                 while page < 20:
+                    # 检查浏览器是否已关闭
+                    if not driver.browser:
+                        raise Exception("浏览器已关闭")
+
                     print(f'正在采集第{page + 1}页的数据内容')
                     driver.scroll.to_bottom()
                     resp = driver.listen.wait()
@@ -53,7 +57,6 @@ def main():
         except:
             pass
         print("\n📁 已结束，数据保存在 data.csv")
-
 
 
 if __name__ == '__main__':
