@@ -105,6 +105,6 @@ while True:
         print('没有查到该商品信息\n')
 
 
-print('a')
+
 
 
