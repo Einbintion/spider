@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="F:\Github\spider\douyin\douyin_comments_20250615_214121.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
