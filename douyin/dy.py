@@ -28,6 +28,7 @@ def main():
 
             # driver.get('https://v.douyin.com/ijUsDWgh/')
 
+
             page = 0
             try:
                 while page < 20:
